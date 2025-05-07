@@ -1,26 +1,35 @@
-let valorConverter, cotacaoMoeda, valorConvertido;
-let opcaoMoeda;
-let simboloMoeda;
-
-opcaoMoeda = prompt("Olá, qual conversão você deseja realizar?")
-
-if (opcaoMoeda != 1 && opcaoMoeda != 2) {
-    alert("Opção Inválida")
+function RealParaDolar (valorConverter, valorCotacao) {
+    const cotacao = 5.76;
+    let valorConvertido;
+    valorConvertido = (valorConverter/cotacao).toFixed(2);
+    return "U$" + valorConvertido;
 }
 
-else {
-    valorConverter = prompt("Digite o valor que deseja converter: (em R$)")
-    if (opcaoMoeda == 1) {
-        cotacaoMoeda = prompt("Digite a cotação do Dolár");
-        simboloMoeda = "U$";
+function RealParaEuro (valorConverter, valorCotacao) {
+    const cotacao = 6.52;
+    let valorConvertido
+    valorConvertido = (valorConverter/cotacao).toFixed(2);
+    return `€ ${valorConvertido}`;
+}
 
 
+function main() {
+    let valorConverter, valorConvertido;
+    let opcaoMoeda;
+    opcaoMoeda = prompt("Olá, Qual conversão você deseja realizar hoje? 1 - Dólar 2 - Euro");
+   
+    if (opcaoMoeda != 1 && opcaoMoeda != 2) {
+      alert("Opção inválida!");
     } else {
-        cotacaoMoeda = prompt("Digite a cotação do Euro");
-        simboloMoeda = "€";
+      valorConverter = prompt("Digite o valor que deseja converter: (em R$)");
+   
+      if (opcaoMoeda == 1) {
+        valorConvertido = RealParaDolar (valorConverter);
+      } else {
+        valorConvertido = RealParaEuro (valorConverter);
+      }
+      alert("O valor convertido é " + valorConvertido);
     }
-
-    valorConvertido = (valorConverter / cotacaoMoeda).toFixed(2);
-
-    alert("O valor convertido para " + simboloMoeda + " resultou em " + simboloMoeda + valorConvertido)
-}
+  }
+   
+  main();
